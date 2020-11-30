@@ -1,6 +1,7 @@
 package testMentor;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
@@ -10,8 +11,8 @@ public class Main {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String expr = reader.readLine();
-            testMentor.Example parrr = new testMentor.Example();
-            if (!parrr.Example (expr)) throw new testMentor.MyException("------Incorrect expression!---------");
+            Pattern1 parrr = new Pattern1();
+            if (!parrr.Pattern1 (expr)) throw new testMentor.MyException("------Incorrect expression!---------");
             testMentor.Calculations calc = new testMentor.Calculations();
             if (expr.matches("^\\d+.*")) {
                 String[] abstring = expr.split("[\\+-/*]",2);
@@ -30,7 +31,7 @@ public class Main {
                 System.out.println(rn.toRoman(calc.Calculate(astring,bstring,sign)));
             }
         }
-        catch (testMentor.MyException e) {
+        catch (MyException | IOException e) {
             System.out.println(e);
         }
     }
